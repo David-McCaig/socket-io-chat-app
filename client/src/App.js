@@ -5,6 +5,7 @@ import { useState } from 'react'; // Add this
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import io from 'socket.io-client'; // Add this
 import Home from './Pages/Home/Home';
+import Chat from './Pages/Chat/Chat';
 
 const socket = io.connect('http://localhost:4000'); // Add this -- our server will run on port 4000, so we connect to it from here
 
@@ -29,6 +30,10 @@ function App() {
                 socket={socket} // Add this
               />
             }
+          />
+          <Route
+            path='/chat'
+            element={<Chat username={username} room={room} socket={socket} />}
           />
         </Routes>
       </div>

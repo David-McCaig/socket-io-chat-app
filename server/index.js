@@ -19,6 +19,10 @@ const io = new Server(server, {
 
 
 const CHAT_BOT = 'ChatBot'; // Add this
+
+let chatRoom = ''; // E.g. javascript, node,...
+let allUsers = []; // All users in current chat room
+
 // Listen for when the client connects via socket.io-client
 io.on('connection', (socket) => {
   console.log(`User connected ${socket.id}`);
