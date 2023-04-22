@@ -7,6 +7,7 @@ const http = require('http');
 const cors = require('cors');
 const { Server } = require('socket.io');
 const harperSaveMessage = require('./services/harper-save-message');
+const harperGetMessages = require('./services/harper-get-messages');
 
 
 app.use(cors()); // Add cors middleware
@@ -34,7 +35,7 @@ io.on('connection', (socket) => {
     const { username, room } = data; // Data sent from client when join_room event emitted
     socket.join(room); // Join the user to a socket room
 
-    // Add this
+    
     let __createdtime__ = Date.now(); // Current timestamp
     // Send message to all users currently in the room, apart from the user that just joined
     socket.to(room).emit('receive_message', {
@@ -63,6 +64,13 @@ io.on('connection', (socket) => {
         .then((response) => console.log(response))
         .catch((err) => console.log(err));
     });
+    //Get last 100messages from DB when user enters room.
+    harperGetMessages(room)
+    .then((last100Messages) => {
+      // console.log('latest messages', last100Messages);
+      socket.emit('last_100_messages', last100Messages);
+    })
+    .catch((err) => console.log(err));
   });
 });
 
