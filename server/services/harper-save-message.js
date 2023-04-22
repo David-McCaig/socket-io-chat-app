@@ -1,10 +1,13 @@
 // server/services/harper-save-message.js
-
+require('dotenv').config();
 var axios = require('axios');
+const { HARPERDB_URL, HARPERDB_PW  } = process.env;
+
 
 function harperSaveMessage(message, username, room) {
-  const dbUrl = process.env.HARPERDB_URL;
-  const dbPw = process.env.HARPERDB_PW;
+  const dbUrl = HARPERDB_URL;
+  const dbPw = HARPERDB_PW;
+  
   if (!dbUrl || !dbPw) return null;
 
   var data = JSON.stringify({

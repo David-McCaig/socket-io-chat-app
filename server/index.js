@@ -1,5 +1,6 @@
 // server/index.js
 require('dotenv').config();
+const { HARPERDB_URL, HARPERDB_PW  } = process.env;
 const express = require('express');
 const app = express();
 const http = require('http');
