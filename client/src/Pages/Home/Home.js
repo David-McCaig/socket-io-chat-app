@@ -24,7 +24,7 @@ const Home = ({ username, setUsername, room, setRoom, socket }) => {
         onChange={(e) => setUsername(e.target.value)}
         />
 
-        <select 
+        {/* <select 
         className={styles.input}
         onChange={(e) => setRoom(e.target.value)}
         >
@@ -33,7 +33,7 @@ const Home = ({ username, setUsername, room, setRoom, socket }) => {
           <option value='node'>Node</option>
           <option value='express'>Express</option>
           <option value='react'>React</option>
-        </select>
+        </select> */}
 
         <button 
         className='btn btn-secondary'

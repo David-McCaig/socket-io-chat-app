@@ -1,20 +1,21 @@
 // client/src/App.js
 
 import './App.css';
-import { useState } from 'react'; // Add this
+import { useState } from 'react'; 
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import io from 'socket.io-client'; // Add this
+import io from 'socket.io-client'; 
 import Home from './Pages/Home/Home';
 import Chat from './Pages/Chat/Chat';
+import { v4 as uuidv4 } from 'uuid';
 
-const socket = io.connect('http://localhost:4000'); // Add this -- our server will run on port 4000, so we connect to it from here
+const socket = io.connect('http://localhost:4000'); // our server will run on port 4000, so we connect to it from here
 
 
 function App() {
-
-  const [username, setUsername] = useState(''); // Add this
-  const [room, setRoom] = useState(''); // Add this
-
+ 
+  const [username, setUsername] = useState(''); 
+  const [room, setRoom] = useState('b9089d26-ca11-4928-a730-3092e6b5ea66'); 
+  
   return (
     <Router>
       <div className='App'>
@@ -23,11 +24,11 @@ function App() {
             path='/'
             element={
               <Home
-                username={username} // Add this
-                setUsername={setUsername} // Add this
-                room={room} // Add this
-                setRoom={setRoom} // Add this
-                socket={socket} // Add this
+                username={username} 
+                setUsername={setUsername} 
+                room={room} 
+                setRoom={setRoom} 
+                socket={socket} 
               />
             }
           />
